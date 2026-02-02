@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Birthday Special 🎂</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffe6f0;
+      text-align: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #ff4d88;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ff1a66;
+    }
+
+    /* Dancing emoji */
+    .dance {
+      font-size: 50px;
+      display: inline-block;
+      animation: danceMove 1s infinite alternate;
+    }
+
+    @keyframes danceMove {
+      0% { transform: translateX(-10px) rotate(-10deg); }
+      100% { transform: translateX(10px) rotate(10deg); }
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      top: -10px;
+      animation: fall 3s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box" id="quiz"></div>
+
+<script>
+let step = 0;
+let mood = "";
+let cakeClicks = 0;
+
+function loadQuestion() {
+  const quiz = document.getElementById("quiz");
+
+  // Q1
+  if (step === 0) {
+    quiz.innerHTML = `
+      <h2>Before we start… rate your gussa 😤</h2>
+      <button onclick="next()">0% 😇</button>
+      <button onclick="next()">100% 😤</button>
+    `;
+  }
+
+  // Q2
+  else if (step === 1) {
+    quiz.innerHTML = `
+      <h2>Chalo ek honest test 😌<br>Aaj tumhara mood?</h2>
+      <button onclick="answerMood('drama')">Drama mode ON 😈</button>
+      <button onclick="answerMood('innocent')">Innocent but dangerous 😇</button>
+      <button onclick="answerMood('birthday')">Birthday hai, sab maaf 🎂</button>
+    `;
+  }
+
+  // Q2 reaction
+  else if (step === 2) {
+    let text = "";
+    if (mood === "drama") {
+      text = "Drama mode? 😌<br>Wo toh tumhara hamesha hi ON rehta hai 😂";
+    } else if (mood === "innocent") {
+      text = "Innocent but dangerous? 😏<br>Permanent version hai ye 😌";
+    } else {
+      text = "Chalo aaj tumhara din hai 🫂<br>Aaj ke liye sab maaf 💖";
+    }
+
+    quiz.innerHTML = `
+      <h
